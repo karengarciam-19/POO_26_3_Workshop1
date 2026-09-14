@@ -10,38 +10,64 @@ public class Workshop {
         // TODO: Implementar el método para retornar la suma de dos números enteros.
         // Ejemplo: Si a = 3 y b = 5, el resultado debería ser 8.
         return a+b;
-	//return 0;
     }
 
     // Método que encuentra el mayor de tres números enteros
     public int mayorDeTresNumeros(int a, int b, int c) {
         // TODO: Implementar el método para retornar el mayor de los tres números enteros.
         // Ejemplo: Si a = 3, b = 7, y c = 5, el resultado debería ser 7.
-      if (a>= b && a >=c) return a;
-    if (b>=c) return b;  
-      return c;
+
+    	int numeromayor=a;
+    	if(b>numeromayor) {
+    		numeromayor=b;
+    	}
+    	if (c>numeromayor){
+    		 numeromayor=c;
+    	}
+        return numeromayor;
     }
+
 
     // Método que retorna la tabla de multiplicar de un número
     public int[] tablaMultiplicar(int numero, int limite) {
         // TODO: Implementar el método para retornar la tabla de multiplicar del número dado.
         // Ejemplo: Si numero = 2 y limite = 5, el resultado debería ser [2, 4, 6, 8, 10].
-        return new int[0];
+        int[] tabla = new int[limite];
+        for (int i = 0; i < limite; i++) {
+            tabla[i] = numero * (i + 1);
+        }
+        return tabla;
     }
+    
 
     // Método que calcula el factorial de un número entero
     public int factorial(int n) {
         // TODO: Implementar el método para calcular el factorial de un número entero.
         // Ejemplo: Si n = 5, el resultado debería ser 120.
         // Lanzar IllegalArgumentException si n es negativo.
-        return 0;
+    	   if (n < 0) {
+    	        throw new IllegalArgumentException("El número no puede ser negativo");
+    	    }
+    	    int resultado = 1;
+    	    for (int i = 1; i <= n; i++) {
+    	        resultado *= i;
+    	    }
+    	    return resultado;
     }
 
     // Método que verifica si un número es primo
     public boolean esPrimo(int numero) {
         // TODO: Implementar el método para verificar si un número es primo.
         // Ejemplo: Si numero = 7, el resultado debería ser true.
-        return false;
+    	   if (numero < 2) {
+    	        return false;
+    	    }
+    	    for (int i = 2; i <= Math.sqrt(numero); i++) {
+    	        if (numero % i == 0) {
+    	            return false;
+    	        }
+    	    }
+    	    return true;
     }
 
     // Método que genera una serie de Fibonacci
@@ -49,132 +75,291 @@ public class Workshop {
         // TODO: Implementar el método para generar la serie de Fibonacci hasta el número n.
         // Ejemplo: Si n = 5, el resultado debería ser [0, 1, 1, 2, 3].
         // Lanzar IllegalArgumentException si n es negativo.
-        return new int[0];
+        if (n < 0) {
+            throw new IllegalArgumentException("El número no puede ser negativo");
+        }
+        int[] serie = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (i == 0) {
+                serie[i] = 0;
+            } else if (i == 1) {
+                serie[i] = 1;
+            } else {
+                serie[i] = serie[i - 1] + serie[i - 2];
+            }
+        }
+        return serie;
     }
 
     // Método que suma todos los elementos de un arreglo
     public int sumaElementos(int[] arreglo) {
         // TODO: Implementar el método para sumar todos los elementos de un arreglo.
         // Ejemplo: Si arreglo = [1, 2, 3, 4, 5], el resultado debería ser 15.
-        return 0;
+    	  int suma = 0;
+    	    for (int i = 0; i < arreglo.length; i++) {
+    	        suma += arreglo[i];
+    	    }
+    	    return suma;
     }
 
     // Método que calcula el promedio de los elementos de un arreglo
     public double promedioElementos(int[] arreglo) {
         // TODO: Implementar el método para calcular el promedio de los elementos de un arreglo.
         // Ejemplo: Si arreglo = [1, 2, 3, 4, 5], el resultado debería ser 3.0.
-        return 0.0;
+    	  int suma = 0;
+    	    for (int i = 0; i < arreglo.length; i++) {
+    	        suma += arreglo[i];
+    	    }
+    	    return (double) suma / arreglo.length;
     }
 
     // Método que encuentra el elemento mayor en un arreglo
     public int encontrarElementoMayor(int[] arreglo) {
         // TODO: Implementar el método para encontrar el elemento mayor en un arreglo.
         // Ejemplo: Si arreglo = [1, 2, 3, 4, 5], el resultado debería ser 5.
-        return 0;
+    	int mayor = arreglo[0];
+        for (int i = 1; i < arreglo.length; i++) {
+            if (arreglo[i] > mayor) {
+                mayor = arreglo[i];
+            }
+        }
+        return mayor;
     }
 
     // Método que encuentra el elemento menor en un arreglo
     public int encontrarElementoMenor(int[] arreglo) {
         // TODO: Implementar el método para encontrar el elemento menor en un arreglo.
         // Ejemplo: Si arreglo = [1, 2, 3, 4, 5], el resultado debería ser 1.
-        return 0;
+    	  int menor = arreglo[0];
+    	    for (int i = 1; i < arreglo.length; i++) {
+    	        if (arreglo[i] < menor) {
+    	            menor = arreglo[i];
+    	        }
+    	    }
+    	    return menor;
     }
 
     // Método que busca un elemento en un arreglo
     public boolean buscarElemento(int[] arreglo, int elemento) {
         // TODO: Implementar el método para buscar un elemento en un arreglo.
         // Ejemplo: Si arreglo = [1, 2, 3, 4, 5] y elemento = 3, el resultado debería ser true.
-        return false;
+    	 for (int i = 0; i < arreglo.length; i++) {
+    	        if (arreglo[i] == elemento) {
+    	            return true;
+    	        }
+    	    }
+    	    return false;
     }
 
     // Método que invierte un arreglo
     public int[] invertirArreglo(int[] arreglo) {
         // TODO: Implementar el método para invertir un arreglo.
         // Ejemplo: Si arreglo = [1, 2, 3, 4, 5], el resultado debería ser [5, 4, 3, 2, 1].
-        return new int[0];
+    	 int[] invertido = new int[arreglo.length];
+    	    for (int i = 0; i < arreglo.length; i++) {
+    	        invertido[i] = arreglo[arreglo.length - 1 - i];
+    	    }
+    	    return invertido;
     }
 
     // Método que ordena un arreglo en orden ascendente
     public int[] ordenarArreglo(int[] arreglo) {
         // TODO: Implementar el método para ordenar un arreglo en orden ascendente.
         // Ejemplo: Si arreglo = [5, 4, 3, 2, 1], el resultado debería ser [1, 2, 3, 4, 5].
-        return new int[0];
+    	 int[] ordenado = arreglo.clone();
+    	    for (int i = 0; i < ordenado.length - 1; i++) {
+    	        for (int j = 0; j < ordenado.length - 1 - i; j++) {
+    	            if (ordenado[j] > ordenado[j + 1]) {
+    	                int temp = ordenado[j];
+    	                ordenado[j] = ordenado[j + 1];
+    	                ordenado[j + 1] = temp;
+    	            }
+    	        }
+    	    }
+    	    return ordenado;
     }
 
     // Método que elimina los duplicados de un arreglo
     public int[] eliminarDuplicados(int[] arreglo) {
         // TODO: Implementar el método para eliminar los duplicados de un arreglo.
         // Ejemplo: Si arreglo = [1, 2, 2, 3, 4, 4, 5], el resultado debería ser [1, 2, 3, 4, 5].
-        return new int[0];
+    	 int[] temp = new int[arreglo.length];
+    	    int contador = 0;
+    	    for (int numero : arreglo) {
+    	        boolean existe = false;
+    	        for (int i = 0; i < contador; i++) {
+    	            if (temp[i] == numero) {
+    	                existe = true;
+    	            }
+    	        }
+    	        if (!existe) {
+    	            temp[contador] = numero;
+    	            contador++;
+    	        }
+    	    }
+    	    int[] resultado = new int[contador];
+    	    for (int i = 0; i < contador; i++) {
+    	        resultado[i] = temp[i];
+    	    }
+    	    return resultado;
     }
 
     // Método que combina dos arreglos en uno solo
     public int[] combinarArreglos(int[] arreglo1, int[] arreglo2) {
         // TODO: Implementar el método para combinar dos arreglos en uno solo.
         // Ejemplo: Si arreglo1 = [1, 2, 3, 4, 5] y arreglo2 = [6, 7, 8], el resultado debería ser [1, 2, 3, 4, 5, 6, 7, 8].
-        return new int[0];
-    }
+    	  int[] combinado = new int[arreglo1.length + arreglo2.length];
+    	    for (int i = 0; i < arreglo1.length; i++) {
+    	        combinado[i] = arreglo1[i];
+    	    }
+    	    for (int i = 0; i < arreglo2.length; i++) {
+    	        combinado[arreglo1.length + i] = arreglo2[i];
+    	    }
+    	    return combinado;
+    	}
+    
 
     // Método que rota un arreglo n posiciones
     public int[] rotarArreglo(int[] arreglo, int posiciones) {
         // TODO: Implementar el método para rotar un arreglo n posiciones.
         // Ejemplo: Si arreglo = [1, 2, 3, 4, 5] y posiciones = 2, el resultado debería ser [3, 4, 5, 1, 2].
-        return new int[0];
+    	  int n = arreglo.length;
+    if (n == 0) { return arreglo; }
+    int desp = posiciones % n;
+    if (desp < 0) { desp = desp + n; }
+    int[] rotado = new int[n];
+    for (int i = 0; i < n; i++) {
+        int nuevaPosicion = (i + desp) % n;
+        rotado[nuevaPosicion] = arreglo[i];
+    }
+    return rotado;
     }
 
     // Método que cuenta los caracteres en una cadena
     public int contarCaracteres(String cadena) {
         // TODO: Implementar el método para contar el número de caracteres en una cadena.
         // Ejemplo: Si cadena = "Hello", el resultado debería ser 5.
-        return 0;
+        return cadena.length();
     }
 
     // Método que invierte una cadena
     public String invertirCadena(String cadena) {
         // TODO: Implementar el método para invertir una cadena.
         // Ejemplo: Si cadena = "Hello", el resultado debería ser "olleH".
-        return "";
+    	  String invertida = "";
+    	    for (int i = cadena.length() - 1; i >= 0; i--) {
+    	        invertida += cadena.charAt(i);
+    	    }
+    	    return invertida;
     }
 
     // Método que verifica si una cadena es un palíndromo
     public boolean esPalindromo(String cadena) {
         // TODO: Implementar el método para verificar si una cadena es un palíndromo.
         // Ejemplo: Si cadena = "madam", el resultado debería ser true.
-        return false;
+    	
+    String limpio = "";
+    for (int i = 0; i < cadena.length(); i++) {
+        char c = cadena.charAt(i);
+        if (c != ' ') { limpio += c; }
     }
+    limpio = limpio.toLowerCase();
+    int inicio = 0;
+    int fin = limpio.length() - 1;
+    while (inicio < fin) {
+        if (limpio.charAt(inicio) != limpio.charAt(fin)) { return false; }
+        inicio++;
+        fin--;
+    }
+    return true;
+}
 
     // Método que cuenta el número de palabras en una cadena
     public int contarPalabras(String cadena) {
         // TODO: Implementar el método para contar el número de palabras en una cadena.
         // Ejemplo: Si cadena = "Este es un test", el resultado debería ser 4.
+    	
+    if (cadena.trim().isEmpty()) {
         return 0;
     }
+
+    String[] palabras = cadena.trim().split("\\s+");
+    return palabras.length;
+}
+    
 
     // Método que convierte una cadena a mayúsculas
     public String convertirAMayusculas(String cadena) {
         // TODO: Implementar el método para convertir una cadena a mayúsculas.
         // Ejemplo: Si cadena = "hello", el resultado debería ser "HELLO".
-        return "";
+    	  String resultado = "";
+    	    for (int i = 0; i < cadena.length(); i++) {
+    	        char c = cadena.charAt(i);
+    	        if (c >= 'a') {
+    	            if (c <= 'z') {
+    	                c = (char) (c - 'a' + 'A');
+    	            }
+    	        }
+    	        resultado += c;
+    	    }
+    	    return resultado;
     }
 
     // Método que convierte una cadena a minúsculas
     public String convertirAMinusculas(String cadena) {
         // TODO: Implementar el método para convertir una cadena a minúsculas.
         // Ejemplo: Si cadena = "HELLO", el resultado debería ser "hello".
-        return "";
+        String resultado = "";
+        for (int i = 0; i < cadena.length(); i++) {
+            char c = cadena.charAt(i);
+            if (c >= 'A') {
+                if (c <= 'Z') {
+                    c = (char) (c - 'A' + 'a');
+                }
+            }
+            resultado += c;
+        }
+        return resultado;
     }
 
     // Método que reemplaza una subcadena en una cadena por otra subcadena
     public String reemplazarSubcadena(String cadena, String antiguaSubcadena, String nuevaSubcadena) {
         // TODO: Implementar el método para reemplazar una subcadena en una cadena por otra subcadena.
         // Ejemplo: Si cadena = "Hello Java", antiguaSubcadena = "Java", y nuevaSubcadena = "world", el resultado debería ser "Hello world".
-        return "";
+    	 String resultado = "";
+    	    int i = 0;
+    	    while (i < cadena.length()) {
+    	        if (i + antiguaSubcadena.length() <= cadena.length()) {
+    	            String trozo = cadena.substring(i, i + antiguaSubcadena.length());
+    	            if (trozo.equals(antiguaSubcadena)) {
+    	                resultado += nuevaSubcadena;
+    	                i += antiguaSubcadena.length();
+    	            } else {
+    	                resultado += cadena.charAt(i);
+    	                i++;
+    	            }
+    	        } else {
+    	            resultado += cadena.charAt(i);
+    	            i++;
+    	        }
+    	    }
+    	    return resultado;
     }
 
     // Método que busca una subcadena en una cadena y retorna su índice
     public int buscarSubcadena(String cadena, String subcadena) {
         // TODO: Implementar el método para buscar una subcadena en una cadena y retornar su índice.
         // Ejemplo: Si cadena = "Hello world" y subcadena = "world", el resultado debería ser 6.
+        int i = 0;
+        while (i < cadena.length()) {
+            if (i + subcadena.length() <= cadena.length()) {
+                String trozo = cadena.substring(i, i + subcadena.length());
+                if (trozo.equals(subcadena)) {
+                    return i;
+                }
+            }
+            i++;
+        }
         return -1;
     }
 
@@ -182,29 +367,91 @@ public class Workshop {
     public boolean validarCorreoElectronico(String correo) {
         // TODO: Implementar el método para validar un correo electrónico.
         // Ejemplo: Si correo = "test@example.com", el resultado debería ser true.
-        return false;
+    
+    boolean tieneArroba = false;
+    boolean tienePuntoValido = false;
+    for (int i = 0; i < correo.length(); i++) {
+        char c = correo.charAt(i);
+        boolean permitido = false;
+        if (c >= 'a') { if (c <= 'z') { permitido = true; } }
+        if (c >= 'A') { if (c <= 'Z') { permitido = true; } }
+        if (c >= '0') { if (c <= '9') { permitido = true; } }
+        if (c == '@') { permitido = true; }
+        if (c == '.') { permitido = true; }
+        if (c == '_') { permitido = true; }
+        if (c == '-') { permitido = true; }
+        if (!permitido) { return false; }
+
+        if (c == '@') {
+            if (i > 0) { if (i < correo.length() - 1) { tieneArroba = true; } }
+        }
+        if (c == '.') {
+            if (tieneArroba) { if (i < correo.length() - 1) { tienePuntoValido = true; } }
+        }
     }
+    if (tieneArroba) { if (tienePuntoValido) { return true; } }
+    return false;
+}    
 
     // Método que calcula el promedio de una lista de números
 
     public double promedioLista(List<Integer> lista) {
         // TODO: Implementar el método para calcular el promedio de una lista de números.
         // Ejemplo: Si lista = [1, 2, 3, 4, 5], el resultado debería ser 3.0.
-        return 0.0;
+    	
+    if (lista.size() == 0) { return 0.0; }
+    int suma = 0;
+    for (int i = 0; i < lista.size(); i++) { suma += lista.get(i); }
+    return (double) suma / lista.size();
+
     }
 
     // Método que convierte un número en su representación binaria
     public String convertirABinario(int numero) {
         // TODO: Implementar el método para convertir un número en su representación binaria.
         // Ejemplo: Si numero = 10, el resultado debería ser "1010".
-        return "";
+    	
+    if (numero == 0) { return "0"; }
+    boolean negativo = false;
+    int n = numero;
+    if (n < 0) { negativo = true; n = -n; }
+    String resultado = "";
+    while (n > 0) {
+        resultado = (n % 2) + resultado;
+        n = n / 2;
     }
+    if (negativo) { resultado = "-" + resultado; }
+    return resultado;
+}
+    
 
     // Método que convierte un número en su representación hexadecimal
     public String convertirAHexadecimal(int numero) {
         // TODO: Implementar el método para convertir un número en su representación hexadecimal.
         // Ejemplo: Si numero = 255, el resultado debería ser "FF".
-        return "";
+    	
+    if (numero == 0) {
+        return "0";
+    }
+    boolean negativo = false;
+    int n = numero;
+    if (n < 0) {
+        negativo = true;
+        n = -n;
+    }
+    String digitos = "0123456789ABCDEF";
+    String resultado = "";
+    while (n > 0) {
+        int residuo = n % 16;
+        char digito = digitos.charAt(residuo);
+        resultado = digito + resultado;
+        n = n / 16;
+    }
+    if (negativo) {
+        resultado = "-" + resultado;
+    }
+    return resultado;
+
     }
 
     // Método para el juego de piedra, papel, tijera, lagarto, Spock
@@ -220,7 +467,62 @@ public class Workshop {
 
         // El método debe retornar un mensaje indicando el resultado del juego.
         // Ejemplo: Si la eleccionUsuario es "Piedra", el resultado podría ser "Ganaste" o "Perdiste" dependiendo de la elección de la computadora.
-        return "";
+    	 String[] opciones = {"Piedra", "Papel", "Tijera", "Lagarto", "Spock"};
+    	    int indice = (int) (Math.random() * opciones.length);
+    	    String eleccionComputadora = opciones[indice];
+
+    	    if (eleccionUsuario.equals(eleccionComputadora)) {
+    	        return "Empate";
+    	    }
+
+    	    boolean gana = false;
+
+    	    if (eleccionUsuario.equals("Piedra")) {
+    	        if (eleccionComputadora.equals("Tijera")) {
+    	            gana = true;
+    	        }
+    	        
+    	        if (eleccionComputadora.equals("Lagarto")) {
+    	            gana = true;
+    	        }
+    	    }
+    	    if (eleccionUsuario.equals("Papel")) {
+    	        if (eleccionComputadora.equals("Piedra")) {
+    	            gana = true;
+    	        }
+    	        if (eleccionComputadora.equals("Spock")) {
+    	            gana = true;
+    	        }
+    	    }
+    	    if (eleccionUsuario.equals("Tijera")) {
+    	        if (eleccionComputadora.equals("Papel")) {
+    	            gana = true;
+    	        }
+    	        if (eleccionComputadora.equals("Lagarto")) {
+    	            gana = true;
+    	        }
+    	    }
+    	    if (eleccionUsuario.equals("Lagarto")) {
+    	        if (eleccionComputadora.equals("Spock")) {
+    	            gana = true;
+    	        }
+    	        if (eleccionComputadora.equals("Papel")) {
+    	            gana = true;
+    	        }
+    	    }
+    	    if (eleccionUsuario.equals("Spock")) {
+    	        if (eleccionComputadora.equals("Tijera")) {
+    	            gana = true;
+    	        }
+    	        if (eleccionComputadora.equals("Piedra")) {
+    	            gana = true;
+    	        }
+    	    }
+
+    	    if (gana) {
+    return "Ganaste";
+}
+return "Perdiste";
     }
 
     public String pptls2(String game[]) {
@@ -242,17 +544,86 @@ Paper disproves Spock
 Spock vaporizes Rock
 Rock crushes Scissors
          */
-        return "";
-    }
+    	    String jugador1 = game[0];
+    	    String jugador2 = game[1];
+
+    	    if (jugador1.equals(jugador2)) {
+    	        return "Empate";
+    	    }
+
+    	    boolean ganaJugador1 = false;
+
+    	    if (jugador1.equals("S")) {
+    	        if (jugador2.equals("P")) {
+    	            ganaJugador1 = true;
+    	        }
+    	        if (jugador2.equals("L")) {
+    	            ganaJugador1 = true;
+    	        }
+    	    }
+    	    if (jugador1.equals("P")) {
+    	        if (jugador2.equals("R")) {
+    	            ganaJugador1 = true;
+    	        }
+    	        if (jugador2.equals("V")) {
+    	            ganaJugador1 = true;
+    	        }
+    	    }
+    	    if (jugador1.equals("R")) {
+    	        if (jugador2.equals("L")) {
+    	            ganaJugador1 = true;
+    	        }
+    	        if (jugador2.equals("S")) {
+    	            ganaJugador1 = true;
+    	        }
+    	    }
+    	    if (jugador1.equals("L")) {
+    	        if (jugador2.equals("V")) {
+    	            ganaJugador1 = true;
+    	        }
+    	        if (jugador2.equals("P")) {
+    	            ganaJugador1 = true;
+    	        }
+    	    }
+    	    if (jugador1.equals("V")) {
+    	        if (jugador2.equals("S")) {
+    	            ganaJugador1 = true;
+    	        }
+    	        if (jugador2.equals("R")) {
+    	            ganaJugador1 = true;
+    	        }
+    	    }
+
+    	   if (ganaJugador1) {
+    return "Player 1";
+}
+return "Player 2";
+    	}
+    
 
     public double areaCirculo(double radio) {
-        return 0.0;
+        return Math.PI* radio;
     }
 
-    public String zoodiac(int day, int month) {
-        return "";
-    }
+   public String zoodiac(int day, int month) {
+    int[] diasPorMes = {31,29,31,30,31,30,31,31,30,31,30,31};
+    if (month < 1) { return "Invalid Date"; }
+    if (month > 12) { return "Invalid Date"; }
+    if (day < 1) { return "Invalid Date"; }
+    if (day > diasPorMes[month - 1]) { return "Invalid Date"; }
 
-
-}
-
+    if (month == 1) { if (day <= 19) return "Capricorn"; return "Aquarius"; }
+    if (month == 2) { if (day <= 18) return "Aquarius"; return "Pisces"; }
+    if (month == 3) { if (day <= 20) return "Pisces"; return "Aries"; }
+    if (month == 4) { if (day <= 19) return "Aries"; return "Taurus"; }
+    if (month == 5) { if (day <= 20) return "Taurus"; return "Gemini"; }
+    if (month == 6) { if (day <= 20) return "Gemini"; return "Cancer"; }
+    if (month == 7) { if (day <= 22) return "Cancer"; return "Leo"; }
+    if (month == 8) { if (day <= 22) return "Leo"; return "Virgo"; }
+    if (month == 9) { if (day <= 22) return "Virgo"; return "Libra"; }
+    if (month == 10) { if (day <= 22) return "Libra"; return "Scorpio"; }
+    if (month == 11) { if (day <= 21) return "Scorpio"; return "Sagittarius"; }
+    if (day <= 21) return "Sagittarius";
+    return "Capricorn";
+}   
+} 
