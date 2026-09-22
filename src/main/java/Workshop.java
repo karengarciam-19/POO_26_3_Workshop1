@@ -40,19 +40,34 @@ public class Workshop {
         return tabla;
     }
 
-    // Método que calcula el factorial de un número entero
+ // Método que calcula el factorial de un número entero
     public int factorial(int n) {
         // TODO: Implementar el método para calcular el factorial de un número entero.
         // Ejemplo: Si n = 5, el resultado debería ser 120.
         // Lanzar IllegalArgumentException si n es negativo.
-        return 0;
+    	   if (n < 0) {
+    	        throw new IllegalArgumentException("El número no puede ser negativo");
+    	    }
+    	    int resultado = 1;
+    	    for (int i = 1; i <= n; i++) {
+    	        resultado *= i;
+    	    }
+    	    return resultado;
     }
 
     // Método que verifica si un número es primo
     public boolean esPrimo(int numero) {
         // TODO: Implementar el método para verificar si un número es primo.
         // Ejemplo: Si numero = 7, el resultado debería ser true.
-        return false;
+    	   if (numero < 2) {
+    	        return false;
+    	    }
+    	    for (int i = 2; i <= Math.sqrt(numero); i++) {
+    	        if (numero % i == 0) {
+    	            return false;
+    	        }
+    	    }
+    	    return true;
     }
 
     // Método que genera una serie de Fibonacci
@@ -60,7 +75,20 @@ public class Workshop {
         // TODO: Implementar el método para generar la serie de Fibonacci hasta el número n.
         // Ejemplo: Si n = 5, el resultado debería ser [0, 1, 1, 2, 3].
         // Lanzar IllegalArgumentException si n es negativo.
-        return new int[0];
+        if (n < 0) {
+            throw new IllegalArgumentException("El número no puede ser negativo");
+        }
+        int[] serie = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (i == 0) {
+                serie[i] = 0;
+            } else if (i == 1) {
+                serie[i] = 1;
+            } else {
+                serie[i] = serie[i - 1] + serie[i - 2];
+            }
+        }
+        return serie;
     }
 
     // Método que suma todos los elementos de un arreglo
