@@ -288,24 +288,79 @@ public class Workshop {
 }
     
 
+ // Método que convierte una cadena a mayúsculas
+    public String convertirAMayusculas(String cadena) {
+        // TODO: Implementar el método para convertir una cadena a mayúsculas.
+        // Ejemplo: Si cadena = "hello", el resultado debería ser "HELLO".
+    	  String resultado = "";
+    	    for (int i = 0; i < cadena.length(); i++) {
+    	        char c = cadena.charAt(i);
+    	        if (c >= 'a') {
+    	            if (c <= 'z') {
+    	                c = (char) (c - 'a' + 'A');
+    	            }
+    	        }
+    	        resultado += c;
+    	    }
+    	    return resultado;
+    }
+
     // Método que convierte una cadena a minúsculas
     public String convertirAMinusculas(String cadena) {
         // TODO: Implementar el método para convertir una cadena a minúsculas.
         // Ejemplo: Si cadena = "HELLO", el resultado debería ser "hello".
-        return "";
+        String resultado = "";
+        for (int i = 0; i < cadena.length(); i++) {
+            char c = cadena.charAt(i);
+            if (c >= 'A') {
+                if (c <= 'Z') {
+                    c = (char) (c - 'A' + 'a');
+                }
+            }
+            resultado += c;
+        }
+        return resultado;
     }
 
     // Método que reemplaza una subcadena en una cadena por otra subcadena
     public String reemplazarSubcadena(String cadena, String antiguaSubcadena, String nuevaSubcadena) {
         // TODO: Implementar el método para reemplazar una subcadena en una cadena por otra subcadena.
         // Ejemplo: Si cadena = "Hello Java", antiguaSubcadena = "Java", y nuevaSubcadena = "world", el resultado debería ser "Hello world".
-        return "";
+    	 String resultado = "";
+    	    int i = 0;
+    	    while (i < cadena.length()) {
+    	        if (i + antiguaSubcadena.length() <= cadena.length()) {
+    	            String trozo = cadena.substring(i, i + antiguaSubcadena.length());
+    	            if (trozo.equals(antiguaSubcadena)) {
+    	                resultado += nuevaSubcadena;
+    	                i += antiguaSubcadena.length();
+    	            } else {
+    	                resultado += cadena.charAt(i);
+    	                i++;
+    	            }
+    	        } else {
+    	            resultado += cadena.charAt(i);
+    	            i++;
+    	        }
+    	    }
+    	    return resultado;
     }
 
-    // Método que busca una subcadena en una cadena y retorna su índice
+
+  // Método que busca una subcadena en una cadena y retorna su índice
     public int buscarSubcadena(String cadena, String subcadena) {
         // TODO: Implementar el método para buscar una subcadena en una cadena y retornar su índice.
         // Ejemplo: Si cadena = "Hello world" y subcadena = "world", el resultado debería ser 6.
+        int i = 0;
+        while (i < cadena.length()) {
+            if (i + subcadena.length() <= cadena.length()) {
+                String trozo = cadena.substring(i, i + subcadena.length());
+                if (trozo.equals(subcadena)) {
+                    return i;
+                }
+            }
+            i++;
+        }
         return -1;
     }
 
@@ -313,8 +368,32 @@ public class Workshop {
     public boolean validarCorreoElectronico(String correo) {
         // TODO: Implementar el método para validar un correo electrónico.
         // Ejemplo: Si correo = "test@example.com", el resultado debería ser true.
-        return false;
+    
+    boolean tieneArroba = false;
+    boolean tienePuntoValido = false;
+    for (int i = 0; i < correo.length(); i++) {
+        char c = correo.charAt(i);
+        boolean permitido = false;
+        if (c >= 'a') { if (c <= 'z') { permitido = true; } }
+        if (c >= 'A') { if (c <= 'Z') { permitido = true; } }
+        if (c >= '0') { if (c <= '9') { permitido = true; } }
+        if (c == '@') { permitido = true; }
+        if (c == '.') { permitido = true; }
+        if (c == '_') { permitido = true; }
+        if (c == '-') { permitido = true; }
+        if (!permitido) { return false; }
+
+        if (c == '@') {
+            if (i > 0) { if (i < correo.length() - 1) { tieneArroba = true; } }
+        }
+        if (c == '.') {
+            if (tieneArroba) { if (i < correo.length() - 1) { tienePuntoValido = true; } }
+        }
     }
+    if (tieneArroba) { if (tienePuntoValido) { return true; } }
+    return false;
+}    
+
 
     // Método que calcula el promedio de una lista de números
 
