@@ -394,27 +394,65 @@ public class Workshop {
     return false;
 }    
 
-
-    // Método que calcula el promedio de una lista de números
+ // Método que calcula el promedio de una lista de números
 
     public double promedioLista(List<Integer> lista) {
         // TODO: Implementar el método para calcular el promedio de una lista de números.
         // Ejemplo: Si lista = [1, 2, 3, 4, 5], el resultado debería ser 3.0.
-        return 0.0;
+    	
+    if (lista.size() == 0) { return 0.0; }
+    int suma = 0;
+    for (int i = 0; i < lista.size(); i++) { suma += lista.get(i); }
+    return (double) suma / lista.size();
+
     }
 
     // Método que convierte un número en su representación binaria
     public String convertirABinario(int numero) {
         // TODO: Implementar el método para convertir un número en su representación binaria.
         // Ejemplo: Si numero = 10, el resultado debería ser "1010".
-        return "";
+    	
+    if (numero == 0) { return "0"; }
+    boolean negativo = false;
+    int n = numero;
+    if (n < 0) { negativo = true; n = -n; }
+    String resultado = "";
+    while (n > 0) {
+        resultado = (n % 2) + resultado;
+        n = n / 2;
     }
+    if (negativo) { resultado = "-" + resultado; }
+    return resultado;
+}
+    
 
     // Método que convierte un número en su representación hexadecimal
     public String convertirAHexadecimal(int numero) {
         // TODO: Implementar el método para convertir un número en su representación hexadecimal.
         // Ejemplo: Si numero = 255, el resultado debería ser "FF".
-        return "";
+    	
+    if (numero == 0) {
+        return "0";
+    }
+    boolean negativo = false;
+    int n = numero;
+    if (n < 0) {
+        negativo = true;
+        n = -n;
+    }
+    String digitos = "0123456789ABCDEF";
+    String resultado = "";
+    while (n > 0) {
+        int residuo = n % 16;
+        char digito = digitos.charAt(residuo);
+        resultado = digito + resultado;
+        n = n / 16;
+    }
+    if (negativo) {
+        resultado = "-" + resultado;
+    }
+    return resultado;
+
     }
 
     // Método para el juego de piedra, papel, tijera, lagarto, Spock
@@ -430,7 +468,62 @@ public class Workshop {
 
         // El método debe retornar un mensaje indicando el resultado del juego.
         // Ejemplo: Si la eleccionUsuario es "Piedra", el resultado podría ser "Ganaste" o "Perdiste" dependiendo de la elección de la computadora.
-        return "";
+    	 String[] opciones = {"Piedra", "Papel", "Tijera", "Lagarto", "Spock"};
+    	    int indice = (int) (Math.random() * opciones.length);
+    	    String eleccionComputadora = opciones[indice];
+
+    	    if (eleccionUsuario.equals(eleccionComputadora)) {
+    	        return "Empate";
+    	    }
+
+    	    boolean gana = false;
+
+    	    if (eleccionUsuario.equals("Piedra")) {
+    	        if (eleccionComputadora.equals("Tijera")) {
+    	            gana = true;
+    	        }
+    	        
+    	        if (eleccionComputadora.equals("Lagarto")) {
+    	            gana = true;
+    	        }
+    	    }
+    	    if (eleccionUsuario.equals("Papel")) {
+    	        if (eleccionComputadora.equals("Piedra")) {
+    	            gana = true;
+    	        }
+    	        if (eleccionComputadora.equals("Spock")) {
+    	            gana = true;
+    	        }
+    	    }
+    	    if (eleccionUsuario.equals("Tijera")) {
+    	        if (eleccionComputadora.equals("Papel")) {
+    	            gana = true;
+    	        }
+    	        if (eleccionComputadora.equals("Lagarto")) {
+    	            gana = true;
+    	        }
+    	    }
+    	    if (eleccionUsuario.equals("Lagarto")) {
+    	        if (eleccionComputadora.equals("Spock")) {
+    	            gana = true;
+    	        }
+    	        if (eleccionComputadora.equals("Papel")) {
+    	            gana = true;
+    	        }
+    	    }
+    	    if (eleccionUsuario.equals("Spock")) {
+    	        if (eleccionComputadora.equals("Tijera")) {
+    	            gana = true;
+    	        }
+    	        if (eleccionComputadora.equals("Piedra")) {
+    	            gana = true;
+    	        }
+    	    }
+
+    	    if (gana) {
+    return "Ganaste";
+}
+return "Perdiste";
     }
 
     public String pptls2(String game[]) {
@@ -452,16 +545,86 @@ Paper disproves Spock
 Spock vaporizes Rock
 Rock crushes Scissors
          */
-        return "";
-    }
+    	    String jugador1 = game[0];
+    	    String jugador2 = game[1];
+
+    	    if (jugador1.equals(jugador2)) {
+    	        return "Empate";
+    	    }
+
+    	    boolean ganaJugador1 = false;
+
+    	    if (jugador1.equals("S")) {
+    	        if (jugador2.equals("P")) {
+    	            ganaJugador1 = true;
+    	        }
+    	        if (jugador2.equals("L")) {
+    	            ganaJugador1 = true;
+    	        }
+    	    }
+    	    if (jugador1.equals("P")) {
+    	        if (jugador2.equals("R")) {
+    	            ganaJugador1 = true;
+    	        }
+    	        if (jugador2.equals("V")) {
+    	            ganaJugador1 = true;
+    	        }
+    	    }
+    	    if (jugador1.equals("R")) {
+    	        if (jugador2.equals("L")) {
+    	            ganaJugador1 = true;
+    	        }
+    	        if (jugador2.equals("S")) {
+    	            ganaJugador1 = true;
+    	        }
+    	    }
+    	    if (jugador1.equals("L")) {
+    	        if (jugador2.equals("V")) {
+    	            ganaJugador1 = true;
+    	        }
+    	        if (jugador2.equals("P")) {
+    	            ganaJugador1 = true;
+    	        }
+    	    }
+    	    if (jugador1.equals("V")) {
+    	        if (jugador2.equals("S")) {
+    	            ganaJugador1 = true;
+    	        }
+    	        if (jugador2.equals("R")) {
+    	            ganaJugador1 = true;
+    	        }
+    	    }
+
+    	   if (ganaJugador1) {
+    return "Player 1";
+}
+return "Player 2";
+    	}
+    
 
     public double areaCirculo(double radio) {
-        return 0.0;
+        return Math.PI* radio;
     }
 
-    public String zoodiac(int day, int month) {
-        return "";
-    }
+   public String zoodiac(int day, int month) {
+    int[] diasPorMes = {31,29,31,30,31,30,31,31,30,31,30,31};
+    if (month < 1) { return "Invalid Date"; }
+    if (month > 12) { return "Invalid Date"; }
+    if (day < 1) { return "Invalid Date"; }
+    if (day > diasPorMes[month - 1]) { return "Invalid Date"; }
 
-
-}
+    if (month == 1) { if (day <= 19) return "Capricorn"; return "Aquarius"; }
+    if (month == 2) { if (day <= 18) return "Aquarius"; return "Pisces"; }
+    if (month == 3) { if (day <= 20) return "Pisces"; return "Aries"; }
+    if (month == 4) { if (day <= 19) return "Aries"; return "Taurus"; }
+    if (month == 5) { if (day <= 20) return "Taurus"; return "Gemini"; }
+    if (month == 6) { if (day <= 20) return "Gemini"; return "Cancer"; }
+    if (month == 7) { if (day <= 22) return "Cancer"; return "Leo"; }
+    if (month == 8) { if (day <= 22) return "Leo"; return "Virgo"; }
+    if (month == 9) { if (day <= 22) return "Virgo"; return "Libra"; }
+    if (month == 10) { if (day <= 22) return "Libra"; return "Scorpio"; }
+    if (month == 11) { if (day <= 21) return "Scorpio"; return "Sagittarius"; }
+    if (day <= 21) return "Sagittarius";
+    return "Capricorn";
+}   
+} 
